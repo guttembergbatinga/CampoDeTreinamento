@@ -1,0 +1,72 @@
+package pagina;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import junit.framework.Assert;
+
+public class testeCampoTreinamento {
+	
+	/*
+	@Test
+	public void teste() {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Guto\\Downloads/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("file:///C:/Users/Guto/Desktop/componentes.html");
+		
+		driver.findElement(By.id("elementosForm:nome")).sendKeys("Guttemberg");
+		Assert.assertEquals("Guttemberg", driver.findElement(By.id("elementosForm:nome")).getAttribute("value"));
+		driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("Batinga");
+		driver.findElement(By.id("elementosForm:sobrenome")).getAttribute("value");
+		
+		driver.findElement(By.id("elementosForm:sexo:0")).click();
+		Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+		driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
+		Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:0")).isSelected());
+		
+		WebElement element = driver.findElement(By.id("elementosForm:escolaridade"));
+		Select combo = new Select(element);
+		combo.selectByVisibleText("Superior");
+		Assert.assertEquals("Superior", combo.getFirstSelectedOption().getText());
+		
+		WebElement esportes = driver.findElement(By.id("elementosForm:esportes"));
+		combo = new Select(esportes);
+		combo.selectByVisibleText("Natacao");
+		combo.selectByVisibleText("Futebol");
+		combo.selectByVisibleText("Corrida");
+		
+		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
+		Assert.assertEquals(3, allSelectedOptions.size());
+		
+		driver.findElement(By.id("buttonSimple")).click();
+		Assert.assertEquals("Obrigado!", driver.findElement(By.id("buttonSimple")).getAttribute("value"));
+		
+		driver.findElement(By.linkText("Voltar")).click();
+		WebElement conferirVoltar = driver.findElement(By.xpath("//*[@id=\"resultado\"]"));
+		Assert.assertEquals("Voltou!", conferirVoltar.getText());
+		
+		driver.quit();
+		
+		*/
+	
+	@Test
+	public void botaoAlert() {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Guto\\Downloads/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("file:///C:/Users/Guto/Desktop/componentes.html");
+		
+		
+		
+	}
+}

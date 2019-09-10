@@ -1,0 +1,13 @@
+package pagina;
+
+import org.openqa.selenium.By;
+
+public class DSL {
+	
+	public void escreve() {
+		
+		driver.findElement(By.id("elementosForm:nome")).sendKeys("Guttemberg");
+		
+	}
+
+}
