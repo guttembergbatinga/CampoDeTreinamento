@@ -12,6 +12,7 @@ public class TesteCampoTreinamento {
 	
 private WebDriver driver;
 private DSL dsl;
+private CampoTreinamentoPage page;
 	
 	@Before
 	public void inicializa() {
@@ -20,6 +21,7 @@ private DSL dsl;
 		driver.manage().window().maximize();
 		driver.get("C:/Users/Guto/Desktop/componentes.html");
 		dsl = new DSL(driver);
+		page = new CampoTreinamentoPage(driver);
 	}
 	@After
 	public void finaliza() {
@@ -28,31 +30,22 @@ private DSL dsl;
 	
 	@Test
 	public void CampoTreinamento() {
-		dsl.escreve("elementosForm:nome", "Guttemberg");
-		Assert.assertEquals("Guttemberg", dsl.obterValorCampo("elementosForm:nome"));
-		dsl.escreve("elementosForm:sobrenome", "Batinga");
-		Assert.assertEquals("Batinga", dsl.obterValorCampo("elementosForm:sobrenome"));
-		dsl.escreve("elementosForm:sugestoes", "Página utilizada para testes de software automatizados");
-		Assert.assertEquals("Página utilizada para testes de software automatizados", dsl.obterValorCampo("elementosForm:sugestoes"));
-		dsl.clicarRadio("elementosForm:sexo:0");
-		Assert.assertTrue(dsl.isVoidMarcado("elementosForm:sexo:0"));
-		dsl.clicarRadio("elementosForm:comidaFavorita:0");
-		Assert.assertTrue(dsl.isVoidMarcado("elementosForm:comidaFavorita:0"));
-		dsl.selecionarCombo("elementosForm:escolaridade", "Superior");
-		Assert.assertEquals("Superior", dsl.obterValorCombo("elementosForm:escolaridade"));
-		dsl.selecionarCombo("elementosForm:esportes", "Natacao");
-		dsl.selecionarCombo("elementosForm:esportes", "Futebol");
-		dsl.clicarLink("Voltar");
-		Assert.assertEquals("Voltou!", dsl.obterTexto("resultado"));
-		dsl.botaoCadastrar("elementosForm:cadastrar");
-		Assert.assertTrue(dsl.obterTexto("resultado").startsWith("Cadastrado!"));
-		Assert.assertTrue(dsl.obterTexto("descNome").endsWith("Guttemberg"));
-		Assert.assertEquals("Sobrenome: Batinga", dsl.obterTexto("descSobrenome"));
-		Assert.assertEquals("Sexo: Masculino", dsl.obterTexto("descSexo"));
-		Assert.assertEquals("Comida: Carne", dsl.obterTexto("descComida"));
-		Assert.assertEquals("Escolaridade: superior", dsl.obterTexto("descEscolaridade"));
-		Assert.assertEquals("Esportes: Natacao Futebol", dsl.obterTexto("descEsportes"));
-		Assert.assertEquals("Sugestoes: Página utilizada para testes de software automatizados", dsl.obterTexto("descSugestoes"));
+		page.setNome("Guttemberg");
+		page.setSobrenome("Batinga");
+		page.setSexoMasculino();
+		page.setComidaCarne();
+		page.setEscolaridade("Superior");
+		page.setNatacao("Natacao");
+		page.setFutebol("Futebol");
+		page.setCadastrar();
+		
+		Assert.assertTrue(page.obterResultadoCadastro().startsWith("Cadastrado!"));
+		Assert.assertTrue(page.obterNomeCadastro().endsWith("Guttemberg"));
+		Assert.assertEquals("Sobrenome: Batinga", page.obterSobrenomeCadastro());
+		Assert.assertEquals("Sexo: Masculino", page.obterSexoCadastro());
+		Assert.assertEquals("Comida: Carne", page.obterComidaCadastro());
+		Assert.assertEquals("Escolaridade: superior", page.obterEscolaridadeCadastro());
+		Assert.assertEquals("Esportes: Natacao Futebol", page.obterEsportesCadastro() );
 		
 	}
 }
